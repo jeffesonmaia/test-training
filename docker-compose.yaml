@@ -1,0 +1,8 @@
+services:
+  test-training:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-training
+    volumes:
+      - .:/usr/src/test-trainig
