@@ -9,7 +9,7 @@ git clone git@github.com:jeffesonmaia/test-training.git
 
 cd test-training/
 
-doker-compose up -d
+docker-compose up -d
 
 docker-compose exec test-training composer install
 ```
