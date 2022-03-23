@@ -17,10 +17,10 @@ jobs:
       run: docker-compose exec -T test-training composer install
 
     - name: Run PHPCS-Fixer
-      run: docker-compose exec -T test-training ./vendor/bin/php-cs-fixer fix src tests
+      run: docker-compose exec -T test-training ./vendor/bin/php-cs-fixer fix src
 
     - name: Run PHPStam
-      run: docker-compose exec -T test-training ./vendor/bin/phpstan analyse --level max src
+      run: docker-compose exec -T test-training ./vendor/bin/phpstan analyse --level max src tests
 
     - name: Run PHPUnit Tests
       run: docker-compose exec -T test-training ./vendor/bin/phpunit tests
