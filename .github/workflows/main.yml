@@ -14,7 +14,7 @@ jobs:
       run: docker-compose up -d --build
       
     - name: Install dependencies
-      run:  docker-compose exec test-training composer install
+      run: docker-compose exec test-training composer install
       
     - name: Run PHPUnit Tests
-      run:  docker-compose exec test-training ./vendor/bin/phpunit tests 
+      run: docker-compose exec test-training ./vendor/bin/phpunit tests 
