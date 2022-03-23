@@ -20,7 +20,7 @@ jobs:
       run: docker-compose exec -T test-training ./vendor/bin/php-cs-fixer fix src tests
 
     - name: Run PHPStam
-      run: docker-compose exec -T test-training ./vendor/bin/phpstan analyse --level max src tests
+      run: docker-compose exec -T test-training ./vendor/bin/phpstan analyse --level max src
 
     - name: Run PHPUnit Tests
       run: docker-compose exec -T test-training ./vendor/bin/phpunit tests
