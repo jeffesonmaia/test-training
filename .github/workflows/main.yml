@@ -9,13 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Start Container
       run: docker-compose up -d --build
-      
+
     - name: Install dependencies
       run: docker-compose exec -T test-training composer install
-      
+
+    - name: Run PHPCS-Fixer
+      run: docker-compose exec -T test-training ./vendor/bin/php-cs-fixer fix src tests
+
     - name: Run PHPStam
       run: docker-compose exec -T test-training ./vendor/bin/phpstan analyse --level max src tests
 

@@ -4,7 +4,7 @@ namespace App\Exercise\Shipping;
 
 class ShippingService
 {
-    const FREE_SHIPPING_MIN_VALUE = 100;
+    public const FREE_SHIPPING_MIN_VALUE = 100;
     private ShippingMethod $shippingMethod;
 
     public function __construct(ShippingMethod $shippingMethod)
