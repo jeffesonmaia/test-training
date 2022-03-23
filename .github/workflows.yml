@@ -1,0 +1,20 @@
+name: Test Training
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Start Container
+      run: docker-compose -f "docker-compose.yml" up -d --build
+      
+    - name: Install dependencies
+      run:  docker-compose exec test-training composer install
+      
+    - name: Run PHPUnit Tests
+      run:  docker-compose exec test-training ./vendor/bin/phpunit tests 
