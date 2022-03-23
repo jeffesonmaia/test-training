@@ -4,6 +4,11 @@
     "phpstan/phpstan": "^1.4",
     "friendsofphp/php-cs-fixer": "^3.7"
   },
+  "scripts": {
+    "test" : "./vendor/bin/phpunit tests",
+    "php-cs-fixer" : "./vendor/bin/php-cs-fixer fix src",
+    "phpstan" : "./vendor/bin/phpstan analyse --level max src tests"
+  },
   "autoload": {
     "psr-4": {
       "App\\": "src/"
