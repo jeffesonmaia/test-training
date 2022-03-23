@@ -25,6 +25,6 @@ class CartItem
 
     public function setQty(int $qty): void
     {
-        $this->qty += $qty;
+        $this->qty = $qty;
     }
 }

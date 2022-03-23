@@ -43,7 +43,7 @@ class Cart
         foreach ($this->getItems() as $key => $item) {
             $productItem = $item->getProduct();
             if ($productItem->getId() === $product->getId()) {
-                $this->items[$key]->setQty($item->getQty() - $qty);
+                $this->items[$key]->setQty($item->getQty() + $qty);
                 return;
             }
         }
