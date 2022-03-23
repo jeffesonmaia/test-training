@@ -4,9 +4,8 @@ namespace App\Exercise\Shipping;
 
 class Cart
 {
-    private int $id;
     private User $user;
-    /** @var Product[] */
+    /** @var array<CartItem> */
     private array $items;
 
     public function __construct(User $user)
@@ -20,18 +19,19 @@ class Cart
         return $this->user;
     }
 
+    /** @return array<CartItem> */
     public function getItems(): array
     {
         return $this->items;
     }
 
-    public function getTotals()
+    public function getTotals(): float
     {
         $total = 0;
+        /** @var CartItem $item */
         foreach ($this->getItems() as $item) {
-            /** @var Product $product */
-            $product = $item['product'];
-            $total += ($product->getPrice() * $item['qty']);
+            $product = $item->getProduct();
+            $total += ($product->getPrice() * $item->getQty());
         }
 
         return $total;
@@ -39,36 +39,29 @@ class Cart
 
     public function addItem(Product $product, int $qty): void
     {
+        /** @var CartItem $item */
         foreach ($this->getItems() as $key => $item) {
-            /** @var Product $productItem */
-            $productItem = $item['product'];
+            $productItem = $item->getProduct();
             if ($productItem->getId() === $product->getId()) {
-                $this->items[$key]['qty'] += $qty;
+                $this->items[$key]->setQty($item->getQty() - $qty);
                 return;
             }
         }
-        $this->items[] = [
-            'product' => $product,
-            'qty' => $qty,
-        ];
+        $this->items[] = new CartItem($product, $qty);
     }
 
     public function removeItem(Product $product, int $qty = null): void
     {
+        /** @var CartItem $item */
         foreach ($this->getItems() as $key => $item) {
-            /** @var Product $productItem */
-            $productItem = $item['product'];
-            if ($product->getId() != $productItem->getId()) {
+            if ($product->getId() != $item->getProduct()->getId()) {
                 continue;
             }
-            if (!is_null($qty) || $item['qty'] <= $qty) {
+            if (!is_null($qty) || $item->getQty() <= $qty) {
                 unset($this->items[$key]);
                 break;
             }
-            $this->items[$key] = [
-                'product' => $product,
-                'qty' => ($item['qty'] - $qty)
-            ];
+            $this->items[$key]->setQty($item->getQty() - $qty);
         }
     }
 
