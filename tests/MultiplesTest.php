@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 class MultiplesTest extends TestCase
 {
-    public function testShouldBeReturnAValidSumOfScenarioOne()
+    public function testShouldBeReturnAValidSumOfScenarioOne(): void
     {
         $rangeStart = 0;
         $rangeEnd = 1000;
@@ -23,7 +23,7 @@ class MultiplesTest extends TestCase
         $this->assertEquals($expected, $calculation);
     }
 
-    public function testShouldBeReturnAValidSumOfScenarioTwo()
+    public function testShouldBeReturnAValidSumOfScenarioTwo(): void
     {
         $rangeStart = 0;
         $rangeEnd = 1000;
@@ -41,7 +41,7 @@ class MultiplesTest extends TestCase
         $this->assertEquals($expected, $calculation);
     }
 
-    public function testShouldBeReturnAValidSumOfScenarioThree()
+    public function testShouldBeReturnAValidSumOfScenarioThree(): void
     {
         $rangeStart = 0;
         $rangeEnd = 1000;
@@ -60,7 +60,7 @@ class MultiplesTest extends TestCase
         $this->assertEquals($expected, $calculation);
     }
 
-    public function testShouldBeReturnAErrorOnInvalidRangeStart()
+    public function testShouldBeReturnAErrorOnInvalidRangeStart(): void
     {
         $rangeStart = -10;
         $rangeEnd = 50;
@@ -72,7 +72,7 @@ class MultiplesTest extends TestCase
         new Multiples($rangeStart, $rangeEnd, $operator, $multipleOne, $multipleTwo);
     }
 
-    public function testShouldBeReturnAErrorOnInvalidRangeEnd()
+    public function testShouldBeReturnAErrorOnInvalidRangeEnd(): void
     {
         $rangeStart = 10;
         $rangeEnd = 8;
@@ -84,7 +84,7 @@ class MultiplesTest extends TestCase
         new Multiples($rangeStart, $rangeEnd, $operator, $multipleOne, $multipleTwo);
     }
 
-    public function testShouldBeReturnAErrorOnInvalidOperator()
+    public function testShouldBeReturnAErrorOnInvalidOperator(): void
     {
         $rangeStart = 0;
         $rangeEnd = 50;

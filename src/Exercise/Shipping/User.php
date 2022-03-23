@@ -6,9 +6,9 @@ class User
 {
     private int $id;
     private string $name;
-    private float $cep;
+    private string $cep;
 
-    public function __construct(int $id, string $name, float $cep)
+    public function __construct(int $id, string $name, string $cep)
     {
         $this->id = $id;
         $this->name = $name;
@@ -25,7 +25,7 @@ class User
         return $this->name;
     }
 
-    public function getCep(): float
+    public function getCep(): string
     {
         return $this->cep;
     }

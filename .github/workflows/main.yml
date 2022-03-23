@@ -16,5 +16,8 @@ jobs:
     - name: Install dependencies
       run: docker-compose exec -T test-training composer install
       
+    - name: Run PHPStam
+      run: docker-compose exec -T test-training ./vendor/bin/phpstan analyse --level max src tests
+
     - name: Run PHPUnit Tests
-      run: docker-compose exec -T test-training ./vendor/bin/phpunit tests 
+      run: docker-compose exec -T test-training ./vendor/bin/phpunit tests

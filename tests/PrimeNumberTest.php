@@ -5,19 +5,19 @@ use PHPUnit\Framework\TestCase;
 
 class PrimeNumberTest extends TestCase
 {
-    public function testShouldReturnTrue()
+    public function testShouldReturnTrue() : void
     {
         $number = new PrimeNumber(2);
         $this->assertTrue($number->check());
     }
 
-    public function testShouldReturnFalse()
+    public function testShouldReturnFalse() : void
     {
         $number = new PrimeNumber(10);
         $this->assertFalse($number->check());
     }
 
-    public function testShouldBeReturnAErrorOnInvalidNumber()
+    public function testShouldBeReturnAErrorOnInvalidNumber() : void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectErrorMessage('Invalid number');

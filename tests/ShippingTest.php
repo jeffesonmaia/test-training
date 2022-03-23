@@ -9,14 +9,14 @@ use PHPUnit\Framework\TestCase;
 
 class ShippingTest extends TestCase
 {
-    public function testShouldCreateAEmptyCart()
+    public function testShouldCreateAEmptyCart(): void
     {
         $user = $this->createMock(User::class);
         $cart = new Cart($user);
         $this->assertEquals(0, $cart->getTotals());
     }
 
-    public function testShouldAddAProductImAEmptyCart()
+    public function testShouldAddAProductImAEmptyCart(): void
     {
         $user = $this->createMock(User::class);
         $product = new Product(1, 'Product One', 10.99);
@@ -25,7 +25,7 @@ class ShippingTest extends TestCase
         $this->assertEquals(10.99, $cart->getTotals());
     }
 
-    public function testShouldAddAProductThatExistsInACart()
+    public function testShouldAddAProductThatExistsInACart(): void
     {
         $user = $this->createMock(User::class);
         $product = new Product(1, 'Product One', 10.99);
@@ -36,7 +36,7 @@ class ShippingTest extends TestCase
         $this->assertCount(1, $cart->getItems());
     }
 
-    public function testShouldRemoveAAddedProductInACart()
+    public function testShouldRemoveAAddedProductInACart(): void
     {
         $user = $this->createMock(User::class);
         $product = new Product(1, 'Product One', 10.99);
@@ -47,7 +47,7 @@ class ShippingTest extends TestCase
         $this->assertCount(0, $cart->getItems());
     }
 
-    public function testShouldRemoveAItemsInACart()
+    public function testShouldRemoveAItemsInACart(): void
     {
         $user = $this->createMock(User::class);
         $product = new Product(1, 'Product One', 10.99);
@@ -60,7 +60,7 @@ class ShippingTest extends TestCase
         $this->assertCount(0, $cart->getItems());
     }
 
-    public function testShouldCalculateFreeShipping()
+    public function testShouldCalculateFreeShipping(): void
     {
         $user = $this->createMock(User::class);
         $cart = new Cart($user);
@@ -72,7 +72,7 @@ class ShippingTest extends TestCase
         $this->assertEquals($cart->getTotals(), $total);
     }
 
-    public function testShouldCalculateNoFreeShipping()
+    public function testShouldCalculateNoFreeShipping(): void
     {
         $user = $this->createMock(User::class);
         $cart = new Cart($user);
@@ -84,7 +84,7 @@ class ShippingTest extends TestCase
         $this->assertGreaterThan($cart->getTotals(), $total);
     }
 
-    public function testShouldCalculateShippingExecutedOnce()
+    public function testShouldCalculateShippingExecutedOnce(): void
     {
         $correiosService = $this->createMock(PacCorreiosShippingMethod::class);
         $correiosService->expects($spy = $this->any())->method('calculatePrice');

@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 class WordInNumberTest extends TestCase
 {
-    public function testShouldConvertAWordInNumber()
+    public function testShouldConvertAWordInNumber() : void
     {
         $exercise = new WordInNumber('foo');
         $this->assertIsInt($exercise->getNumber());
@@ -15,7 +15,7 @@ class WordInNumberTest extends TestCase
         $this->assertTrue($exercise->isMultipleOfThreeAndFive());
     }
 
-    public function testShouldReturnAExceptionWithWrongParam()
+    public function testShouldReturnAExceptionWithWrongParam() : void
     {
         $exercise = new WordInNumber('a0 b4');
         $this->assertEquals(3, $exercise->getNumber());
